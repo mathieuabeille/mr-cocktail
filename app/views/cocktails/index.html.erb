@@ -1,7 +1,18 @@
 <h2>Our cocktails</h2>
 
 <p><%= link_to 'New cocktail', new_cocktail_path %></p>
+<div class="container">
+  <div class="row">
+  <% @cocktails.each do |cocktail| %>
+    <% if cocktail.photo.present? %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill %>')">
+          <h4><%= link_to cocktail.name, cocktail_path(cocktail) %></h4>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+</div>
 
-<% @cocktails.each do |cocktail| %>
-  <h4><%= link_to cocktail.name, cocktail_path(cocktail) %></h4>
-<% end %>

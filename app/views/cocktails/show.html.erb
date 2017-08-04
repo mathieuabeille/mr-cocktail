@@ -1,5 +1,5 @@
 <h2><%= @cocktail.name %></h2>
-
+<%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
 <% @cocktail.doses.each do |dose| %>
   <div>
     <p><%= dose.description %> of <%= dose.ingredient.name %></p>
@@ -8,7 +8,7 @@
 <% end %>
 
 <h3>Create new dose</h3>
-<%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+
 <%= simple_form_for([@cocktail, @dose]) do |f| %>
 
   <%= f.input :description %>
